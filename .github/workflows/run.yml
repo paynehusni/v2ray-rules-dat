@@ -77,6 +77,7 @@ jobs:
         run: |
           > reject.txt
           curl -sSL https://github.com/ACL4SSR/ACL4SSR/raw/master/Clash/BanAD.list >> 1.txt
+          curl -sSL https://github.com/harnseen/har/raw/master/Clash/SelfUseReject.list >> 1.txt
           sed -i "s/DOMAIN\-KEYWORD/DOMAIN\-SUFFIX/g" 1.txt
           curl -sSL https://github.com/ACL4SSR/ACL4SSR/raw/master/Clash/BanEasyList.list >> 1.txt
           curl -sSL https://github.com/ACL4SSR/ACL4SSR/raw/master/Clash/BanEasyPrivacy.list >> 1.txt

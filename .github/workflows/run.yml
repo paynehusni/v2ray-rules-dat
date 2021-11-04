@@ -43,6 +43,21 @@ jobs:
         with:
           ref: hidden
 
+      - name: pull ad domains from ACL4SSR
+        run: |
+          echo "" > reject.txt
+          curl -sSL https://github.com/ACL4SSR/ACL4SSR/raw/master/Clash/BanAD.list >> 1.txt
+          curl -sSL https://github.com/harnseen/har/raw/master/Clash/SelfUseReject.list >> 1.txt
+          sed -i "s/DOMAIN\-KEYWORD/DOMAIN\-SUFFIX/g" 1.txt
+          curl -sSL https://github.com/ACL4SSR/ACL4SSR/raw/master/Clash/BanEasyList.list >> 1.txt
+          curl -sSL https://github.com/ACL4SSR/ACL4SSR/raw/master/Clash/BanEasyPrivacy.list >> 1.txt
+          curl -sSL https://github.com/ACL4SSR/ACL4SSR/raw/master/Clash/BanEasyListChina.list >> 1.txt
+          curl -sSL https://github.com/ACL4SSR/ACL4SSR/raw/master/Clash/BanProgramAD.list >> 1.txt
+          sed -i "s/DOMAIN\-SUFFIX,//g" 1.txt
+          sed -r '/^\#/d' 1.txt > 2.txt
+          sed -r '/^$/d' 2.txt > 3.txt
+          sed -r '/^IP\-CIDR/d' 3.txt > reject.txt
+
       - name: Checkout Loyalsoldier/domain-list-custom
         uses: actions/checkout@v2
         with:
@@ -71,22 +86,6 @@ jobs:
           cd gfwlist2dnsmasq || exit 1
           chmod +x ./gfwlist2dnsmasq.sh
           ./gfwlist2dnsmasq.sh -l -o ./temp-gfwlist.txt
-          
-
-      - name: pull ad domains from ACL4SSR
-        run: |
-          echo "" > reject.txt
-          curl -sSL https://github.com/ACL4SSR/ACL4SSR/raw/master/Clash/BanAD.list >> 1.txt
-          curl -sSL https://github.com/harnseen/har/raw/master/Clash/SelfUseReject.list >> 1.txt
-          sed -i "s/DOMAIN\-KEYWORD/DOMAIN\-SUFFIX/g" 1.txt
-          curl -sSL https://github.com/ACL4SSR/ACL4SSR/raw/master/Clash/BanEasyList.list >> 1.txt
-          curl -sSL https://github.com/ACL4SSR/ACL4SSR/raw/master/Clash/BanEasyPrivacy.list >> 1.txt
-          curl -sSL https://github.com/ACL4SSR/ACL4SSR/raw/master/Clash/BanEasyListChina.list >> 1.txt
-          curl -sSL https://github.com/ACL4SSR/ACL4SSR/raw/master/Clash/BanProgramAD.list >> 1.txt
-          sed -i "s/DOMAIN\-SUFFIX,//g" 1.txt
-          sed -r '/^\#/d' 1.txt > 2.txt
-          sed -r '/^$/d' 2.txt > 3.txt
-          sed -r '/^IP\-CIDR/d' 3.txt > reject.txt
 
       - name: Get and add direct domains into temp-direct.txt file
         run: |

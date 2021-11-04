@@ -75,7 +75,7 @@ jobs:
 
       - name: pull ad domains from ACL4SSR
         run: |
-          > reject.txt
+          echo "" > reject.txt
           curl -sSL https://github.com/ACL4SSR/ACL4SSR/raw/master/Clash/BanAD.list >> 1.txt
           curl -sSL https://github.com/harnseen/har/raw/master/Clash/SelfUseReject.list >> 1.txt
           sed -i "s/DOMAIN\-KEYWORD/DOMAIN\-SUFFIX/g" 1.txt
@@ -87,7 +87,6 @@ jobs:
           sed -r '/^\#/d' 1.txt > 2.txt
           sed -r '/^$/d' 2.txt > 3.txt
           sed -r '/^IP\-CIDR/d' 3.txt > reject.txt
-          rm -rf 1.txt 2.txt 3.txt
 
       - name: Get and add direct domains into temp-direct.txt file
         run: |

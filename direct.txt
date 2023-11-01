@@ -1,3 +1,5 @@
+miui.com
+baidu.com
 423down.com
 bokecc.com
 chaipip.com
@@ -6,8 +8,6 @@ hrtsea.com
 kaikeba.com
 laomo.me
 mpyit.com
-cn
-中国
 公司
 网络
 360.com

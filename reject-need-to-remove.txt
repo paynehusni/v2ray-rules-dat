@@ -20,3 +20,4 @@ tagtic.cn
 tongji.baidu.com
 tv.sohu.com
 ue.yeyoucdn.com
+t.co

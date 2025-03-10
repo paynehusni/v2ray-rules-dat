@@ -1,0 +1,12 @@
+DOMAIN,adsmind.apdcdn.tc.qq.com
+DOMAIN,adsmind.gdtimg.com
+DOMAIN,adsmind.tc.qq.com
+DOMAIN,pgdt.gtimg.cn
+DOMAIN,pgdt.gtimg.com
+DOMAIN,pgdt.ugdtimg.com
+DOMAIN,splashqqlive.gtimg.com
+DOMAIN,wa.gtimg.com
+DOMAIN,wxsnsdy.wxs.qq.com
+DOMAIN,wxsnsdythumb.wxs.qq.com
+DOMAIN-KEYWORD,omgmtaw
+go-mpulse
